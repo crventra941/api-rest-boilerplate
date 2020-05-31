@@ -22,7 +22,12 @@ const {
     CommentController} = require('../controllers');
 
 //ROUTES
-const { HomeRoutes } = require('../routes/index.routes');
+const { HomeRoutes, 
+        UserRoutes, 
+        CommentRoutes, 
+        IdeaRoutes } = require('../routes/index.routes');
+
+
 const Routes = require('../routes');
 
 //MODELS
@@ -50,7 +55,11 @@ container.register({
     CommentController: asClass(CommentController.bind(CommentController)).singleton(),
     HomeController: asClass(HomeController.bind(HomeController)).singleton()
 }).register({
-    HomeRoutes: asFunction(HomeRoutes).singleton()
+    HomeRoutes: asFunction(HomeRoutes).singleton(),
+    IdeaRoutes: asFunction(IdeaRoutes).singleton(),
+    UserRoutes: asFunction(UserRoutes).singleton(),
+    CommentRoutes: asFunction(CommentRoutes).singleton(),
+
 }).register({
     User: asValue(User),
     Idea: asValue(Idea),
