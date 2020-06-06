@@ -13,7 +13,9 @@ class CommentController {
     }
 
     async getAll(req, res) {
-        const comments = await _commentService.getAll();
+        const { pageSize, pageNum } = req.query;
+        
+        const comments = await _commentService.getAll( pageSize, pageNum );
         return res.send(comments)
     }
 
