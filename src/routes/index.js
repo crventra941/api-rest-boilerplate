@@ -5,13 +5,16 @@ const compression = require('compression');
 require("express-async-errors");
 
 const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
+const swaggerUI = require('swagger-ui-express');
+const { SWAGGER_PATH } = require("../config");
+const swaggerDocs = require(SWAGGER_PATH);
 
-module.exports = ({ 
-        HomeRoutes, 
-        UserRoutes, 
-        CommentRoutes, 
-        AuthRoutes,
-        IdeaRoutes}) =>{
+module.exports = ({
+    HomeRoutes,
+    UserRoutes,
+    CommentRoutes,
+    AuthRoutes,
+    IdeaRoutes }) => {
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -30,6 +33,7 @@ module.exports = ({
 
 
     router.use("/v1/api", apiRoutes);
+    router.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
     router.use(NotFoundMiddleware);
     router.use(ErrorMiddleware)

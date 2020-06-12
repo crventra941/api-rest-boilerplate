@@ -14,8 +14,8 @@ class CommentController {
 
     async getAll(req, res) {
         const { pageSize, pageNum } = req.query;
-        
-        const comments = await _commentService.getAll( pageSize, pageNum );
+
+        const comments = await _commentService.getAll(pageSize, pageNum);
         return res.send(comments)
     }
 
@@ -44,6 +44,8 @@ class CommentController {
     async createComment(req, res) {
         const { body } = req;
         const { ideaId } = req.params;
+        const { id: author} = req.user;
+        body.author = author;
 
         const createdComment = await _commentService.createComment(body, ideaId)
         return res.status(201).send(createdComment)

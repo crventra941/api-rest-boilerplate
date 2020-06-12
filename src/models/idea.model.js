@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const IdeaSchema = new Schema({
     idea: { type: String, required: true },
     description: { type: String, },
-    upvotoes: [{ type: Boolean }],
+    upvotes: [{ type: Boolean }],
     downvotes: [{ type: Boolean }],
     author: {
         type: Schema.Types.ObjectId,

@@ -19,7 +19,7 @@ class IdeaService extends BaseService{
     }
 
     async upvoteIdea( ideaId ){
-        if(!ideId){
+        if(!ideaId){
             const error = new Error();
             error.status = 400;
             error.message= "ideaId must be sent";
@@ -41,7 +41,7 @@ class IdeaService extends BaseService{
     }
 
     async downvoteIdea( ideaId ){
-        if(!ideId){
+        if(!ideaId){
             const error = new Error();
             error.status = 400;
             error.message= "ideaId must be sent";
